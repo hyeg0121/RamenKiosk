@@ -20,22 +20,7 @@ public class RamenFrame extends CommonFrame {
 	boolean ramenChecking = false;
 	
 	//생성자
-	public RamenFrame () {
-//		//카테고리 버튼
-//		String categorys[] = "전체,best,국물,볶음".split(",");
-//		
-//		for ( int i = 0; i < categorys.length; i++ ) {
-//			var btn = new JButton(categorys[i]);
-//			btn.setBackground(Color.WHITE);
-//			btn.setBorder(null);
-//			btn.setIcon(new ImageIcon(RamenFrame.class.getResource("../image/category"+(i+1)+".png")));
-//			btn.setRolloverSelectedIcon(new ImageIcon(RamenFrame.class.getResource("../image/ramen"+(i+1)+".png")));
-//			btn.setBounds(10+i*110, 40, 100, 50);
-//			
-//			
-//			add(btn);
-//		}
-		
+	public RamenFrame () {		
 		
 		// 라면 버튼 ppt(버튼을 반복문으로 배치)
 		String[] ramens = { "진라면","신라면","너구리","참깨라면","불닭볶음면","짜파게티" };

@@ -26,17 +26,13 @@ public class TimerFrame extends CommonFrame implements Runnable{
 	Image background = new ImageIcon(TimerFrame.class.getResource("../image/Cooking.png")).getImage();
 	
 	public TimerFrame() {
-		//String time = getCurrentTime();
-		
 		label = new JLabel((sec/60)+" : "+(sec%60));
-		label.setFont(new Font("TimesRoman", Font.ITALIC, 40));
+		label.setFont(new Font("맑은고딕", Font.BOLD, 40));
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setBounds(100,200,250,80);
 		add(label);
 		Thread t1 = new Thread(this);
 		t1.start();
-		
-		
 	}
 	
 	@Override
@@ -51,23 +47,13 @@ public class TimerFrame extends CommonFrame implements Runnable{
 					JOptionPane.showMessageDialog(null, "조리가 완료되었습니다! 맛있게드세요.", "완료", JOptionPane.INFORMATION_MESSAGE);
 					
 					this.dispose();
-					
 				}
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
 	}
-	
-	public String getCurrentTime() {
-		Calendar c = Calendar.getInstance();
-		int hour = c.get(Calendar.HOUR_OF_DAY);
-		int min = c.get(Calendar.MINUTE);
-		int sec = c.get(Calendar.SECOND);
-		
-		String time = hour+":"+min+":"+sec;
-		return time;
-	}
+
 	
 	public void paint(Graphics g) {
 		g.drawImage(background, 0, 0, null);
