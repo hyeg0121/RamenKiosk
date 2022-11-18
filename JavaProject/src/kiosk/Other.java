@@ -2,7 +2,7 @@ package kiosk;
 
 public class Other {
 	
-	int quantity[] = new int[] {50, 50, 50, 50};
+	private static int quantity[] = new int[] {50, 50, 50, 50};
 	
 	private int price;
 
@@ -26,5 +26,15 @@ public class Other {
 	public int getPrice() {
 		return this.price;
 	}
+
+	public static int getQuantity(int num) {
+		return quantity[num];
+	}
+
+	public static void setQuantity(int[] quantity) {
+		Other.quantity = quantity;
+	}
+	
+	
 	
 }

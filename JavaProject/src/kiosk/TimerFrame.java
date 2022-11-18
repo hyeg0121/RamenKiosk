@@ -44,8 +44,7 @@ public class TimerFrame extends CommonFrame implements Runnable{
 				label.setText((sec/60)+" : "+(sec%60));
 				
 				if( sec == 0) {
-					JOptionPane.showMessageDialog(null, "조리가 완료되었습니다! 맛있게드세요.", "완료", JOptionPane.INFORMATION_MESSAGE);
-					
+					JOptionPane.showMessageDialog(null, "조리가 완료되었습니다! 맛있게드세요", "완료", JOptionPane.INFORMATION_MESSAGE);
 					this.dispose();
 				}
 			} catch (InterruptedException e) {

@@ -56,15 +56,17 @@ public class OtherFrame extends CommonFrame {
 				System.out.println(c.getPrice());
 				cnt++;
 			});
+			
 			this.add(btn);
+			
 		}//버튼 생성
 		
+		//취소버튼
 		var noChoiceBtn = new JButton();
 		noChoiceBtn.setBounds(15, 650, 200, 80);
 		noChoiceBtn.setBackground(Color.white);
 		noChoiceBtn.setBorder(null);
 		noChoiceBtn.setIcon(new ImageIcon(OtherFrame.class.getResource("../image/backBtn.png")));
-		//noChoiceBtn.setBackground(Color.gray);
 		noChoiceBtn.addActionListener(e -> {
 			int ans = JOptionPane.showConfirmDialog(null, "취소하시겠습니까?", "취소", JOptionPane.YES_NO_OPTION);
 			if ( ans == JOptionPane.NO_OPTION) {
@@ -77,6 +79,7 @@ public class OtherFrame extends CommonFrame {
 		});
 		this.add(noChoiceBtn);
 		
+		//선택완료버튼
 		var yesChoiceBtn = new JButton();
 		yesChoiceBtn.setBounds(225, 650, 200, 80);
 		yesChoiceBtn.setBackground(Color.white);

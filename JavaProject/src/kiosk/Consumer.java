@@ -2,8 +2,8 @@ package kiosk;
 
 public class Consumer {
 
-	private static int price = 0; //ppt
-	private static int second = 0;
+	public static int price = 0; //ppt
+	public static int second = 0;
 	
 	public void setPrice(int p) {
 		price += p;

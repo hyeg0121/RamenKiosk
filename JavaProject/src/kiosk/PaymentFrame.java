@@ -59,7 +59,7 @@ public class PaymentFrame extends CommonFrame {
 				new Charge().setVisible(true);
 				this.dispose();
 			}else if ( money > c.getPrice() ) {
-				JOptionPane.showMessageDialog(null, "거스름돈 " + "" + "원을 반환합니다.", "정보", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "거스름돈 " + (money-c.getPrice()) + "원을 반환합니다.", "정보", JOptionPane.INFORMATION_MESSAGE);
 				new Charge().setVisible(true);
 				this.dispose();
 			}else {
