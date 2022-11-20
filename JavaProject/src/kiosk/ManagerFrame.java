@@ -36,21 +36,14 @@ public class ManagerFrame extends CommonFrame {
 			}
 			
 			int num = i;
-			//버튼 기능
-			btn.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseEntered(MouseEvent e) {
-					super.mouseEntered(e);
-					var menu = new JPopupMenu();
-					var show = new JMenuItem(Other.getQuantity(num)+"개");
-					
-					
-				}
-			});
 			
 			add(btn);
 			
 		}
+		System.out.println(Other.getCheeseQuantity());
+		System.out.println(Other.getEggQuantity());
+		System.out.println(Other.getTteokQuantity());
+		System.out.println(Other.getSausegesQuantity());
 	}
 	
 	public void paint(Graphics g) {

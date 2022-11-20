@@ -35,6 +35,7 @@ public class StartFrame extends CommonFrame {
 		managerBtn.addActionListener(e -> {
 			new ManagerFrame().setVisible(true);
 			this.dispose();
+			
 		});
 		this.add(managerBtn);
 		

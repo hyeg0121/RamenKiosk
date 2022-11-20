@@ -36,7 +36,7 @@ public class OtherFrame extends CommonFrame {
 		String[] others = {"치즈","계란","떡","소세지"};
 		for ( int i =0; i < others.length; i++ ) {
 			var btn = new CommonButton(others[i], "other"+(i+1));
-			
+			//버튼 배치
 			if ( i % 2 == 0 ) {
 				btn.setBounds(50, 100+170*(i/2), 160, 160);
 			}else {
@@ -49,10 +49,10 @@ public class OtherFrame extends CommonFrame {
 					JOptionPane.showMessageDialog(null, "뽀글이 사용 안전을 위하여 \n 사리 추가를 제한합니다.","경고", JOptionPane.ERROR_MESSAGE );
 					return;
 				}
-				var other = new Other(btn.getText());
+				
 				this.otherArea.setText(this.otherArea.getText()+ btn.getText()+" 선택\n");
-				this.payArea.setText((this.payArea.getText()+other.getPrice() +"원\n"));
-				c.setPrice(other.getPrice());
+				this.payArea.setText((this.payArea.getText()+Other.getPrice(btn.getText()) +"원\n"));
+				c.addPrice(Other.getPrice(btn.getText()));
 				System.out.println(c.getPrice());
 				cnt++;
 			});

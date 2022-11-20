@@ -2,13 +2,16 @@ package kiosk;
 
 public class Consumer {
 
-	public static int price = 0; //ppt
+	public static int price = 0; 
 	public static int second = 0;
 	
-	public void setPrice(int p) {
-		price += p;
+	public void setPrice(int price) {
+		Consumer.price = price;
 	}
 	
+	public void addPrice(int price) {
+		Consumer.price = price;
+	}
 	public static void setSecond(int second) {
 		Consumer.second = second;
 	}
