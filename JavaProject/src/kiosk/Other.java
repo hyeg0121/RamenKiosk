@@ -11,6 +11,13 @@ public class Other {
 	private static int eggQuantity = 50;
 	private static int tteokQuantity = 50;
 	private static int sausegesQuantity = 50;
+	public static int[] quantityList = { cheeseQuantity, eggQuantity, tteokQuantity, sausegesQuantity };
+	
+	public static boolean cheeseChoice = false;
+	public static boolean eggChoice = false;
+	public static boolean tteokChoice = false;
+	public static boolean sausegesChoice = false;
+	public static boolean choices[] = {cheeseChoice, eggChoice, tteokChoice, sausegesChoice};
 	
 	public Other() {}
 

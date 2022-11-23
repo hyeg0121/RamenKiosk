@@ -35,4 +35,6 @@ public class CommonButton extends JButton {
 		setIcon(new ImageIcon(Main.class.getResource("../image/"+img+".png")));
 	}
 	
+	
+	
 }

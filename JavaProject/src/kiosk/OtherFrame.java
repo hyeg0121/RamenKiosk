@@ -19,7 +19,7 @@ public class OtherFrame extends CommonFrame {
 	JTextArea otherArea = new JTextArea();
 	JTextArea payArea = new JTextArea();
 	Consumer c = new Consumer();
-	int cnt = 0;
+	int cnt=0;
 	
 	public OtherFrame(String name) {
 		this.otherArea.setBounds(0, 450, 200, 150);
@@ -43,49 +43,64 @@ public class OtherFrame extends CommonFrame {
 				btn.setBounds(240, 100 + 170*(i/2), 160, 160);
 			}
 			
-			btn.addActionListener(e -> {
-				
-				if ( cnt == 3 ) {
-					JOptionPane.showMessageDialog(null, "뽀글이 사용 안전을 위하여 \n 사리 추가를 제한합니다.","경고", JOptionPane.ERROR_MESSAGE );
-					return;
-				}
-				
-				this.otherArea.setText(this.otherArea.getText()+ btn.getText()+" 선택\n");
-				this.payArea.setText((this.payArea.getText()+Other.getPrice(btn.getText()) +"원\n"));
-				c.addPrice(Other.getPrice(btn.getText()));
-				System.out.println(c.getPrice());
-				cnt++;
-			});
+			//if ( cnt == 3 ) {
+			//	JOptionPane.showMessageDialog(null, "뽀글이 사용 안전을 위하여 \n 사리 추가를 제한합니다.","경고", JOptionPane.ERROR_MESSAGE );
+			//	return;
+			//}
+			
+			if ( i == 0 ) {
+				btn.addActionListener(e -> {
+					this.otherArea.setText(this.otherArea.getText()+ btn.getText()+" 선택\n");
+					this.payArea.setText((this.payArea.getText()+Other.getPrice(btn.getText()) +"원\n"));
+					c.addPrice(Other.getPrice(btn.getText()));
+					Other.cheeseChoice = true;
+				});
+			}else if ( i == 1 ) {
+				btn.addActionListener(e -> {
+					this.otherArea.setText(this.otherArea.getText()+ btn.getText()+" 선택\n");
+					this.payArea.setText((this.payArea.getText()+Other.getPrice(btn.getText()) +"원\n"));
+					c.addPrice(Other.getPrice(btn.getText()));
+					Other.eggChoice = true;
+				});
+			}else if ( i == 2 ) {
+				btn.addActionListener(e -> {
+					this.otherArea.setText(this.otherArea.getText()+ btn.getText()+" 선택\n");
+					this.payArea.setText((this.payArea.getText()+Other.getPrice(btn.getText()) +"원\n"));
+					c.addPrice(Other.getPrice(btn.getText()));
+					Other.tteokChoice = true;
+				});
+			}else {
+				btn.addActionListener(e -> {
+					this.otherArea.setText(this.otherArea.getText()+ btn.getText()+" 선택\n");
+					this.payArea.setText((this.payArea.getText()+Other.getPrice(btn.getText()) +"원\n"));
+					c.addPrice(Other.getPrice(btn.getText()));
+					Other.sausegesChoice = true;
+				});
+			}
 			
 			this.add(btn);
 			
 		}//버튼 생성
 		
 		//취소버튼
-		var noChoiceBtn = new JButton();
-		noChoiceBtn.setBounds(15, 650, 200, 80);
-		noChoiceBtn.setBackground(Color.white);
-		noChoiceBtn.setBorder(null);
-		noChoiceBtn.setIcon(new ImageIcon(OtherFrame.class.getResource("../image/backBtn.png")));
-		noChoiceBtn.addActionListener(e -> {
-			int ans = JOptionPane.showConfirmDialog(null, "취소하시겠습니까?", "취소", JOptionPane.YES_NO_OPTION);
-			if ( ans == JOptionPane.NO_OPTION) {
-				return;
-			}
-			new RamenFrame().setVisible(true);
-			c.clear();
+		JButton backBtn = new CommonButton(15,650,200,80,"라면선택","backBtn");
+		this.add(backBtn);
+		//액션리스너 
+		backBtn.addActionListener(e -> {
+			new RamenFrame().setVisible(true); //라면선택창 띄우기
 			
-			this.dispose();
+			c.clear(); //지불 가격과 시간 초기화
+			
+			for (int i = 0; i < Other.choices.length; i++) {
+				Other.choices[i] = false;
+			}//사리 선택 여부 초기화 
+			
+			this.dispose(); //종료
 		});
-		this.add(noChoiceBtn);
 		
 		//선택완료버튼
-		var yesChoiceBtn = new JButton();
-		yesChoiceBtn.setBounds(225, 650, 200, 80);
-		yesChoiceBtn.setBackground(Color.white);
-		yesChoiceBtn.setBorder(null);
-		yesChoiceBtn.setIcon(new ImageIcon(OtherFrame.class.getResource("../image/ChargeBtn.png")));
-		yesChoiceBtn.addActionListener(e -> {
+		JButton choiceBtn = new CommonButton(225,650,200,80,"결제하기","ChargeBtn");
+		choiceBtn.addActionListener(e -> {
 			int ans = JOptionPane.showConfirmDialog(null, "결제하시겠습니까?", "결제", JOptionPane.YES_OPTION);
 			if ( ans == JOptionPane.NO_OPTION) {
 				return;
@@ -94,11 +109,13 @@ public class OtherFrame extends CommonFrame {
 			this.dispose();
 			
 		});
-		this.add(yesChoiceBtn);
+		this.add(choiceBtn);
 		
 	}//생성자 메소드
 	
 	public void paint(Graphics g) {
 		g.drawImage(background, 0, 0, null);
 	}
+	
+
 }
