@@ -13,7 +13,8 @@ public class StartFrame extends CommonFrame {
 	
 	public StartFrame() {
 		ImageIcon startBtnImg = new ImageIcon(StartFrame.class.getResource("../image/StartBtn.png"));
-		
+		Consumer.clear();   
+		//CommonButton으로 바꾸기
 		var startBtn = new JButton();
 		startBtn.setBackground(Color.white);
 		startBtn.setBorder(null);

@@ -18,9 +18,9 @@ public class OtherFrame extends CommonFrame {
 	Image background = new ImageIcon(RamenFrame.class.getResource("../image/ChoiceOther.png")).getImage();
 	JTextArea otherArea = new JTextArea();
 	JTextArea payArea = new JTextArea();
-	Consumer c = new Consumer();
-	int cnt=0;
-	
+
+
+	public OtherFrame() {}
 	public OtherFrame(String name) {
 		this.otherArea.setBounds(0, 450, 200, 150);
 		otherArea.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
@@ -29,7 +29,7 @@ public class OtherFrame extends CommonFrame {
 		
 		this.payArea.setBounds(225, 450, 200, 150);
 		payArea.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
-		payArea.setText(c.getPrice()+"원\n");
+		payArea.setText(Consumer.price+"원\n");
 		this.add(this.payArea);
 		
 		// 사리 버튼 추가 
@@ -52,28 +52,28 @@ public class OtherFrame extends CommonFrame {
 				btn.addActionListener(e -> {
 					this.otherArea.setText(this.otherArea.getText()+ btn.getText()+" 선택\n");
 					this.payArea.setText((this.payArea.getText()+Other.getPrice(btn.getText()) +"원\n"));
-					c.addPrice(Other.getPrice(btn.getText()));
+					Consumer.addPrice(Other.getPrice(btn.getText()));
 					Other.cheeseChoice = true;
 				});
 			}else if ( i == 1 ) {
 				btn.addActionListener(e -> {
 					this.otherArea.setText(this.otherArea.getText()+ btn.getText()+" 선택\n");
 					this.payArea.setText((this.payArea.getText()+Other.getPrice(btn.getText()) +"원\n"));
-					c.addPrice(Other.getPrice(btn.getText()));
+					Consumer.addPrice(Other.getPrice(btn.getText()));
 					Other.eggChoice = true;
 				});
 			}else if ( i == 2 ) {
 				btn.addActionListener(e -> {
 					this.otherArea.setText(this.otherArea.getText()+ btn.getText()+" 선택\n");
 					this.payArea.setText((this.payArea.getText()+Other.getPrice(btn.getText()) +"원\n"));
-					c.addPrice(Other.getPrice(btn.getText()));
+					Consumer.addPrice(Other.getPrice(btn.getText()));
 					Other.tteokChoice = true;
 				});
 			}else {
 				btn.addActionListener(e -> {
 					this.otherArea.setText(this.otherArea.getText()+ btn.getText()+" 선택\n");
 					this.payArea.setText((this.payArea.getText()+Other.getPrice(btn.getText()) +"원\n"));
-					c.addPrice(Other.getPrice(btn.getText()));
+					Consumer.addPrice(Other.getPrice(btn.getText()));
 					Other.sausegesChoice = true;
 				});
 			}
@@ -89,7 +89,7 @@ public class OtherFrame extends CommonFrame {
 		backBtn.addActionListener(e -> {
 			new RamenFrame().setVisible(true); //라면선택창 띄우기
 			
-			c.clear(); //지불 가격과 시간 초기화
+			Consumer.clear(); //지불 가격과 시간 초기화
 			
 			for (int i = 0; i < Other.choices.length; i++) {
 				Other.choices[i] = false;

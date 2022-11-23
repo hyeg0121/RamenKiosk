@@ -5,27 +5,27 @@ public class Consumer {
 	public static int price = 0; 
 	public static int second = 0;
 	
-	public void setPrice(int price) {
+	public static void setPrice(int price) {
 		Consumer.price = price;
 	}
 	
-	public void addPrice(int price) {
+	public static void addPrice(int price) {
 		Consumer.price = price;
 	}
 	public static void setSecond(int second) {
 		Consumer.second = second;
 	}
 	
-	public void clear() {
+	public static void clear() {
 		price = 0;
 		second = 0;
 	}
 	
-	public int getPrice() {
+	public static int getPrice() {
 		return price;
 	}
 	
-	public int getSecond() {
+	public static int getSecond() {
 		return second;
 	}
 
