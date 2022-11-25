@@ -23,8 +23,8 @@ public class StartFrame extends CommonFrame {
 		this.add(startBtn);
 		startBtn.addActionListener(e -> {
 			
-			var pnl = new RamenFrame();
-			pnl.setVisible(true);
+			new RamenFrame().setVisible(true);
+			Consumer.clear();
 			this.dispose();
 		});
 		

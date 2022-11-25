@@ -2,15 +2,15 @@ package kiosk;
 
 public class Consumer {
 
-	public static int price = 0; 
-	public static int second = 0;
+	private static int price; 
+	private static int second;
 	
 	public static void setPrice(int price) {
 		Consumer.price = price;
 	}
 	
 	public static void addPrice(int price) {
-		Consumer.price = price;
+		Consumer.price += price;
 	}
 	public static void setSecond(int second) {
 		Consumer.second = second;

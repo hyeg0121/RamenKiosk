@@ -11,12 +11,12 @@ public class Ramen {
 	private int blackPrice = 1400;
 	
 	private int second;
-	private int jinSecond = 1000;
-	private int sinSecond = 1000;
-	private int neguriSecond = 1200;
-	private int chamSecond = 1200;
-	private int fireSecond = 1400;
-	private int blackSecond = 1400;
+	private int jinSecond = 180;
+	private int sinSecond = 180;
+	private int neguriSecond = 210;
+	private int chamSecond = 210;
+	private int fireSecond = 180;
+	private int blackSecond = 180;
 
 	public int getPrice(String name) {
 		if ( name.equals("진라면")) {
@@ -46,7 +46,7 @@ public class Ramen {
 		}else if ( name.equals("불닭볶음면")) {
 			return this.fireSecond;
 		}else {
-			return this.blackPrice;
+			return this.blackSecond;
 		}
 	}	
 	

@@ -6,18 +6,15 @@ public class Other {
 	private static int eggPrice = 500;
 	private static int tteokPrice = 700;
 	private static int sausagesPrice = 700;
+	public static int priceList[] = { cheesePrice, eggPrice, tteokPrice, cheesePrice };
 	
-	private static int cheeseQuantity = 50;
-	private static int eggQuantity = 50;
-	private static int tteokQuantity = 50;
-	private static int sausegesQuantity = 50;
-	public static int[] quantityList = { cheeseQuantity, eggQuantity, tteokQuantity, sausegesQuantity };
-	
+	public static int quantityList[] = new int[4];//치즈, 계란, 떡, 소세지
+
 	public static boolean cheeseChoice = false;
 	public static boolean eggChoice = false;
 	public static boolean tteokChoice = false;
 	public static boolean sausegesChoice = false;
-	public static boolean choices[] = {cheeseChoice, eggChoice, tteokChoice, sausegesChoice};
+	public static boolean choiceList[] = {cheeseChoice, eggChoice, tteokChoice, sausegesChoice};
 	
 	public Other() {}
 
@@ -35,48 +32,32 @@ public class Other {
 
 	public static void setQuantity(String other) {
 		if(other.equals("치즈")) {
-			--cheeseQuantity;
+			quantityList[0]--;
 		}else if(other.equals("계란")) {
-			--eggQuantity;
+			quantityList[1]--;
 		}else if(other.equals("떡")) {
-			--tteokQuantity;
+			quantityList[2]--;
 		}else {
-			--sausegesQuantity;
+			quantityList[3]--;
 		}
 	}
 	
-	public static int getCheeseQuantity() {
-		return cheeseQuantity;
-	}
-
-	public static void setCheeseQuantity(int cheeseQuantity) {
-		Other.cheeseQuantity = cheeseQuantity;
-	}
-
-	public static int getEggQuantity() {
-		return eggQuantity;
-	}
-
-	public static void setEggQuantity(int eggQuantity) {
-		Other.eggQuantity = eggQuantity;
-	}
-
-	public static int getTteokQuantity() {
-		return tteokQuantity;
-	}
-
-	public static void setTteokQuantity(int tteokQuantity) {
-		Other.tteokQuantity = tteokQuantity;
-	}
-
-	public static int getSausegesQuantity() {
-		return sausegesQuantity;
-	}
-
-	public static void setSausegesQuantity(int sausegesQuantity) {
-		Other.sausegesQuantity = sausegesQuantity;
+	public static void setChoiceValue(String other) {
+		if(other.equals("치즈")) {
+			cheeseChoice = true;
+		}else if(other.equals("계란")) {
+			eggChoice = true;
+		}else if(other.equals("떡")) {
+			tteokChoice = true;
+		}else {
+			sausegesChoice = true;
+		}
 	}
 	
-	
+	public static void setQuantityMax() {
+		for(int i = 0; i < quantityList.length; i++) {
+			quantityList[i] = 50;
+		}
+	}
 	
 }

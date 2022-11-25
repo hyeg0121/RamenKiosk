@@ -21,10 +21,10 @@ public class RamenFrame extends CommonFrame {
 	//생성자
 	public RamenFrame () {		
 
-		// 라면 버튼 ppt(버튼을 반복문으로 배치)
 		String[] ramens = { "진라면","신라면","너구리","참깨라면","불닭볶음면","짜파게티" };
 
-		for ( int i = 0; i < ramens.length; i++ ) {
+		for (int i = 0; i < ramens.length; i++) {
+			
 			var btn = new CommonButton(ramens[i], "ramen"+(i+1));
 
 			if ( i % 2 == 0 ) {
@@ -33,21 +33,19 @@ public class RamenFrame extends CommonFrame {
 				btn.setBounds(240, 100+170*(i/2), 160, 160);
 			}
 
-
 			btn.addActionListener(e -> {
-				Consumer.price = ramen.getPrice(btn.getText());
-				Consumer.second = ramen.getSecond(btn.getText());
+				Consumer.setPrice(ramen.getPrice(btn.getText()));
+				Consumer.setSecond(ramen.getSecond(btn.getText()));
 				new OtherFrame(btn.getText()).setVisible(true);
 				this.dispose();
-				System.out.println(Consumer.price);
 			});
 
 			this.add(btn);
 
 		}
-
 	}
-
+	
+	//배경 이미지 메서드
 	public void paint(Graphics g) {
 		g.drawImage(background, 0, 0, null);
 	}
