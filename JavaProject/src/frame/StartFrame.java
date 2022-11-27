@@ -15,22 +15,24 @@ import kiosk.Consumer;
 public class StartFrame extends KioskFrame {
 
 	public StartFrame() {
-
+		//소비자의 가격과 시간 초기화
 		Consumer.clear();  
-		
-		JPanel panel = new KioskPanel(setImage("StartFrame"));
+
+		//패널생성
+		JPanel panel = new KioskPanel(getImage("StartFrame"));
 		add(panel);
-		
-		//CommonButton으로 바꾸기
+
+		//시작하기
 		var startBtn = new KioskButton(94, 400, 245, 85, "시작하기", "startBtn");
-		panel.add(startBtn);
 		startBtn.addActionListener(e -> {
 
 			new RamenFrame().setVisible(true);
 			Consumer.clear();
 			this.dispose();
 		});
+		panel.add(startBtn);
 
+		//관리자페이지
 		var managerBtn = new KioskButton(175, 665, 95, 35, "관리자페이지", "ManagerBtn");
 		managerBtn.addActionListener(e -> {
 			new ManagerFrame().setVisible(true);
@@ -38,10 +40,6 @@ public class StartFrame extends KioskFrame {
 		});
 		panel.add(managerBtn);
 
-	}
-	
-//	public void paint(Graphics g) {
-//		paintComponents(g);
-//	}
-	
-}
+	}//constructor
+
+}//class

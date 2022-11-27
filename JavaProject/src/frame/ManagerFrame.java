@@ -27,20 +27,21 @@ import kiosk.Other;
 public class ManagerFrame extends KioskFrame {
 
 	public ManagerFrame() {
-		KioskPanel panel = new KioskPanel(setImage("ManagerFrame"));
+		//패널 생성
+		KioskPanel panel = new KioskPanel(getImage("ManagerFrame"));
 		add(panel);
 
+		//-, + 메뉴 버튼과 수량 필드 
 		String btnList[] = {"치즈","계란","떡","소세지"};
 		JTextField tfList[] = new JTextField[4];
-
 		for ( int i = 0; i < btnList.length; i++ ) {
-			JTextField quantity = new JTextField();
-			quantity.setEditable(false);
-			quantity.setFont(new Font("맑은고딕", Font.BOLD, 20));
-			quantity.setHorizontalAlignment(0);
-			quantity.setText(String.valueOf(Other.quantityList[i]));
+			tfList[i] = new JTextField();
+			tfList[i].setText(String.valueOf(Other.quantityList[i]));
+			tfList[i].setEditable(false);
+			tfList[i].setFont(new Font("맑은고딕", Font.BOLD, 20));
+			tfList[i].setHorizontalAlignment(0);
 			
-			JLabel imgLb = new JLabel(new ImageIcon(setImage("MngOther"+(i+1))));
+			JLabel imgLb = new JLabel(new ImageIcon(getImage("MngOther"+(i+1))));
 			KioskButton min = new KioskButton("-","min");
 			KioskButton plus = new KioskButton("+", "plus");
 			
@@ -48,64 +49,86 @@ public class ManagerFrame extends KioskFrame {
 				imgLb.setBounds(40, 120+220*(i/2),160, 160);
 				min.setBounds(40, 290+220*(i/2), 30, 30);
 				plus.setBounds(160, 290+220*(i/2), 30, 30);
-				quantity.setBounds(70, 290+220*(i/2), 80, 30);
+				tfList[i].setBounds(70, 290+220*(i/2), 80, 30);
 			}else {
 				imgLb.setBounds(250, 120+220*(i/2), 160, 160);
 				min.setBounds(250, 290+220*(i/2), 30, 30);
 				plus.setBounds(370, 290+220*(i/2), 30, 30);
-				quantity.setBounds(280, 290+220*(i/2), 80, 30);
+				tfList[i].setBounds(280, 290+220*(i/2), 80, 30);
 			}
-
+			
 			if ( i == 0 ) {
 				min.addActionListener(e-> {
-					quantity.setText(String.valueOf(Integer.parseInt(quantity.getText())-1));
+					if( Integer.parseInt(tfList[0].getText()) == 0 ) {
+						JOptionPane.showMessageDialog(null, "재고를 삭제할 수 없습니다.", "경고", JOptionPane.ERROR_MESSAGE, new ImageIcon(getImage("error").getScaledInstance(60, 60, 4)));
+					}else {
+						tfList[0].setText(String.valueOf(Integer.parseInt(tfList[0].getText())-1));
+					}
 				});
 				plus.addActionListener(e -> {
-					quantity.setText(String.valueOf(Integer.parseInt(quantity.getText())+1));
+					tfList[0].setText(String.valueOf(Integer.parseInt(tfList[0].getText())+1));
 				});
 			}else if ( i == 1 ) {
 				min.addActionListener(e-> {
-					quantity.setText(String.valueOf(Integer.parseInt(quantity.getText())-1));
+					if( Integer.parseInt(tfList[1].getText()) == 0 ) {
+						JOptionPane.showMessageDialog(null, "재고를 삭제할 수 없습니다.", "경고", JOptionPane.ERROR_MESSAGE, new ImageIcon(getImage("error").getScaledInstance(60, 60, 4)));
+					}else {
+						tfList[1].setText(String.valueOf(Integer.parseInt(tfList[1].getText())-1));
+					}
 				});
 				plus.addActionListener(e -> {
-					quantity.setText(String.valueOf(Integer.parseInt(quantity.getText())+1));
+					tfList[1].setText(String.valueOf(Integer.parseInt(tfList[1].getText())+1));
 				});
 			}else if ( i == 2 ) {
 				min.addActionListener(e-> {
-					quantity.setText(String.valueOf(Integer.parseInt(quantity.getText())-1));
+					if( Integer.parseInt(tfList[2].getText()) == 0 ) {
+						JOptionPane.showMessageDialog(null, "재고를 삭제할 수 없습니다.", "경고", JOptionPane.ERROR_MESSAGE, new ImageIcon(getImage("error").getScaledInstance(60, 60, 4)));
+					}else {
+						tfList[2].setText(String.valueOf(Integer.parseInt(tfList[2].getText())-1));
+					}
 				});
 				plus.addActionListener(e -> {
-					quantity.setText(String.valueOf(Integer.parseInt(quantity.getText())+1));
+					tfList[2].setText(String.valueOf(Integer.parseInt(tfList[2].getText())+1));
 				});
 			}else {
 				min.addActionListener(e-> {
-					quantity.setText(String.valueOf(Integer.parseInt(quantity.getText())-1));
+					if( Integer.parseInt(tfList[3].getText()) == 0 ) {
+						JOptionPane.showMessageDialog(null, "재고를 삭제할 수 없습니다.", "경고", JOptionPane.ERROR_MESSAGE, new ImageIcon(getImage("error").getScaledInstance(60, 60, 4)));
+					}else {
+						tfList[3].setText(String.valueOf(Integer.parseInt(tfList[3].getText())-1));
+					}
 				});
 				plus.addActionListener(e -> {
-					quantity.setText(String.valueOf(Integer.parseInt(quantity.getText())+1));
+					tfList[3].setText(String.valueOf(Integer.parseInt(tfList[3].getText())+1));
 				});
 			}
 
-			panel.add(min); panel.add(plus); panel.add(quantity); panel.add(imgLb);
+			panel.add(min); panel.add(plus); panel.add(tfList[i]); panel.add(imgLb);
 		}
 
-		
-		JButton backBtn = new KioskButton(15,650,200,80,"홈으로","goHomeBtn");
+		//홈으로
+		KioskButton backBtn = new KioskButton(15,650,200,80,"홈으로","goHomeBtn");
 		backBtn.addActionListener(e -> {
 			new StartFrame().setVisible(true);
-			this.dispose(); //종료
+			this.dispose(); 
 		});
 		panel.add(backBtn);
 
-
-		JButton choiceBtn = new KioskButton(225,650,200,80,"재고투입완료","stockBtn");
+		//재고투입완료
+		KioskButton choiceBtn = new KioskButton(225,650,200,80,"재고투입완료","stockBtn");
 		choiceBtn.addActionListener(e -> {
+			
+			for(int i = 0; i < Other.quantityList.length; i++) {
+			Other.quantityList[i] = Integer.parseInt(tfList[i].getText());
+			}
+			
+			JOptionPane.showMessageDialog(null, "재료를 추가하였습니다", "정보", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(getImage("info").getScaledInstance(60, 60, 4)));
 			new StartFrame().setVisible(true);
 			this.dispose();
 		});
 		panel.add(choiceBtn);
 
-	}
+	}//constructor
 
-}
+}//class
 

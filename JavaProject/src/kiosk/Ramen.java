@@ -10,7 +10,7 @@ public class Ramen {
 	private static int firePrice = 1400;
 	private static int blackPrice = 1400;
 	
-	private static int jinSecond = 180;
+	private static int jinSecond = 180; 
 	private static int sinSecond = 180;
 	private static int neguriSecond = 210;
 	private static int chamSecond = 210;

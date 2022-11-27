@@ -18,7 +18,7 @@ import components.KioskPanel;
 public class ChoicePayWayFrame extends KioskFrame {
 
 	public ChoicePayWayFrame() {
-		KioskPanel panel = new KioskPanel(setImage("ChoicePayWayFrame"));
+		KioskPanel panel = new KioskPanel(getImage("ChoicePayWayFrame"));
 		add(panel);
 		
 		String buttons[] = { "카드", "현금", "삼성페이/페이코" };
@@ -38,7 +38,6 @@ public class ChoicePayWayFrame extends KioskFrame {
 			});
 			panel.add(btn);
 		}
-	}
-	
+	}//constructor
 
-}
+}//class

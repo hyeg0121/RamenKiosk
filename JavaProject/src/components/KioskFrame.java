@@ -24,7 +24,7 @@ public class KioskFrame extends JFrame {
 		setResizable(false);
 	}
 	
-	public Image setImage(String imgName) {
+	public Image getImage(String imgName) {
 		return new ImageIcon(KioskFrame.class.getResource("../image/"+imgName+".png")).getImage();	
 	}
 	

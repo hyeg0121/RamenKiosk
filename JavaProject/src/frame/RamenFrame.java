@@ -21,17 +21,15 @@ import kiosk.Ramen;
 
 public class RamenFrame extends KioskFrame {
 
-	private Image background = setImage("ChoiceRamen");
-	
-	//생성자
-	public RamenFrame () {		
-		KioskPanel panel = new KioskPanel(setImage("ChoiceRamen"));
+	public RamenFrame () {	
+		//패널 생성
+		KioskPanel panel = new KioskPanel(getImage("ChoiceRamen"));
 		add(panel);
-		
-		String[] ramens = { "진라면","신라면","너구리","참깨라면","불닭볶음면","짜파게티" };
 
+		//라면 선택 버튼 6개 생성
+		String[] ramens = { "진라면","신라면","너구리","참깨라면","불닭볶음면","짜파게티" };
 		for (int i = 0; i < ramens.length; i++) {
-			
+
 			var btn = new KioskButton(ramens[i], "ramen"+(i+1));
 
 			if ( i % 2 == 0 ) {
@@ -49,7 +47,8 @@ public class RamenFrame extends KioskFrame {
 
 			panel.add(btn);
 
-		}
-	}
+		}//for
 
-}
+	}//constructor
+
+}//class

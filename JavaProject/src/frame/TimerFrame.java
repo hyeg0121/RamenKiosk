@@ -27,17 +27,21 @@ public class TimerFrame extends KioskFrame implements Runnable{
 	int sec = Consumer.getSecond();
 	
 	public TimerFrame() {
-		KioskPanel panel = new KioskPanel(setImage("Cooking"));
+		//패널생성
+		KioskPanel panel = new KioskPanel(getImage("Cooking"));
 		add(panel);
 		
+		//label에 시간 표시 
 		label = new JLabel((sec/60)+" : "+(sec%60));
 		label.setFont(new Font("맑은고딕", Font.BOLD, 40));
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setBounds(100,200,250,80);
 		panel.add(label);
+		
 		Thread t1 = new Thread(this);
 		t1.start();
-	}
+		
+	}//constructor
 	
 	@Override
 	public void run() {
@@ -48,14 +52,16 @@ public class TimerFrame extends KioskFrame implements Runnable{
 				label.setText((sec/60)+" : "+(sec%60));
 				
 				if( sec == 0) {
-					JOptionPane.showMessageDialog(null, "조리가 완료되었습니다! 맛있게드세요", "완료", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "조리가 완료되었습니다! 맛있게드세요", "완료", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(getImage("basic").getScaledInstance(60, 60, 4)));
+					new StartFrame().setVisible(true);
 					this.dispose();
 				}
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
-	}
+	}//run
+	
 
-}
+}//class
 

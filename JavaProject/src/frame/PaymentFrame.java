@@ -21,10 +21,12 @@ import kiosk.Consumer;
 public class PaymentFrame extends KioskFrame {
 
 	public PaymentFrame() {
-		KioskPanel panel = new KioskPanel(setImage("payment"));
+		//패널생성
+		KioskPanel panel = new KioskPanel(getImage("payment"));
 		add(panel);
 		
-		JOptionPane.showMessageDialog(null, "결제 금액은 " + Consumer.getPrice() + "원 입니다", "정보", JOptionPane.INFORMATION_MESSAGE);
+		//결제금액 팝업
+		JOptionPane.showMessageDialog(null, "결제 금액은 " + Consumer.getPrice() + "원 입니다", "정보", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(getImage("info").getScaledInstance(60, 60, 4)));
 		
 		JPanel mainPanel = new JPanel();
 		mainPanel.setBounds(100,300,250,280);
@@ -36,10 +38,11 @@ public class PaymentFrame extends KioskFrame {
 		tf.setEditable(false);
 		mainPanel.add(tf, BorderLayout.NORTH);
 		
-		var centerPanel = new JPanel();
+		JPanel centerPanel = new JPanel();
 		centerPanel.setLayout(new GridLayout(2,3));
 		mainPanel.add(centerPanel, BorderLayout.CENTER);
 		
+		//금액 입력 버튼
 		int buttons[] = { 100, 500, 1000, 5000, 10000, 50000 };
 		for ( int i = 0; i < buttons.length; i++ ) {
 			var btn = new JButton(String.valueOf(buttons[i]));
@@ -62,7 +65,7 @@ public class PaymentFrame extends KioskFrame {
 				new SuccessChargFrame().setVisible(true);
 				this.dispose();
 			}else if ( money > Consumer.getPrice() ) {
-				JOptionPane.showMessageDialog(null, "거스름돈 " + (money-Consumer.getPrice()) + "원을 반환합니다.", "정보", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "거스름돈 " + (money-Consumer.getPrice()) + "원을 반환합니다.", "정보", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(getImage("info").getScaledInstance(60, 60, 4)));
 				new SuccessChargFrame().setVisible(true);
 				this.dispose();
 			}else {

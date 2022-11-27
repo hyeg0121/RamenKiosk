@@ -20,14 +20,14 @@ import kiosk.Consumer;
 import kiosk.Other;
 
 public class OtherFrame extends KioskFrame {
-
+	//멤버변수
 	JTextArea otherArea = new JTextArea();
 	JTextArea payArea = new JTextArea();
 
+	//생성자
 	public OtherFrame() {}
-	
 	public OtherFrame(String name) {
-		KioskPanel panel = new KioskPanel(setImage("ChoiceOther"));
+		KioskPanel panel = new KioskPanel(getImage("ChoiceOther"));
 		add(panel);
 		
 		//선택창
@@ -49,14 +49,12 @@ public class OtherFrame extends KioskFrame {
 
 			KioskButton btn = new KioskButton(others[i], "other"+(i+1));
 
-			//버튼 배치
 			if ( i % 2 == 0 ) {
 				btn.setBounds(50, 120+170*(i/2), 160, 160);
 			}else {
 				btn.setBounds(240, 120 + 170*(i/2), 160, 160);
 			}
 
-			//버튼 기능
 			btn.addActionListener(e -> {
 				this.otherArea.setText(this.otherArea.getText()+ btn.getText()+" 선택\n");
 				this.payArea.setText((this.payArea.getText()+Other.getPrice(btn.getText()) +"원\n"));
@@ -70,7 +68,7 @@ public class OtherFrame extends KioskFrame {
 		}//버튼 생성
 
 		//취소버튼
-		JButton backBtn = new KioskButton(15,670,200,80,"라면선택","backBtn");
+		KioskButton backBtn = new KioskButton(15,670,200,80,"라면선택","backBtn");
 		backBtn.addActionListener(e -> {
 			new RamenFrame().setVisible(true); //라면선택창 띄우기
 			Consumer.clear(); //지불 가격과 시간 초기화
@@ -82,9 +80,9 @@ public class OtherFrame extends KioskFrame {
 		panel.add(backBtn);
 
 		//선택완료버튼
-		JButton choiceBtn = new KioskButton(225,670,200,80,"결제하기","ChargeBtn");
+		KioskButton choiceBtn = new KioskButton(225,670,200,80,"결제하기","ChargeBtn");
 		choiceBtn.addActionListener(e -> {
-			int ans = JOptionPane.showConfirmDialog(null, "결제하시겠습니까?", "결제", JOptionPane.YES_OPTION);
+			int ans = JOptionPane.showConfirmDialog(null, "결제하시겠습니까?", "결제", JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE,new ImageIcon(getImage("basic").getScaledInstance(60, 60, 4)));
 			if ( ans == JOptionPane.NO_OPTION) {
 				return;
 			}
@@ -94,7 +92,6 @@ public class OtherFrame extends KioskFrame {
 		});
 		panel.add(choiceBtn);
 
-	}//생성자 메소드
+	}//constructor
 
-
-}
+}//class
