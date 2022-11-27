@@ -1,4 +1,4 @@
-package kiosk;
+package frame;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -6,27 +6,30 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.util.Iterator;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class PaymentFrame extends CommonFrame {
-	
-	Image background = new ImageIcon(PaymentFrame.class.getResource("../image/payment.png")).getImage();
+import components.KioskButton;
+import components.KioskFrame;
+import components.KioskPanel;
+import kiosk.Consumer;
 
-	
+public class PaymentFrame extends KioskFrame {
+
 	public PaymentFrame() {
+		KioskPanel panel = new KioskPanel(setImage("payment"));
+		add(panel);
+		
 		JOptionPane.showMessageDialog(null, "결제 금액은 " + Consumer.getPrice() + "원 입니다", "정보", JOptionPane.INFORMATION_MESSAGE);
+		
 		JPanel mainPanel = new JPanel();
 		mainPanel.setBounds(100,300,250,280);
 		mainPanel.setLayout(new BorderLayout());
-		 
+		
 		JTextField tf = new JTextField(50);
 		tf.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		tf.setText("0");
@@ -50,27 +53,24 @@ public class PaymentFrame extends CommonFrame {
 			centerPanel.add(btn);
 		}
 		
-		add(mainPanel);
+		panel.add(mainPanel);
 		
-		var paymentBtn = new CommonButton(100, 600, 250, 80, "payment", "payBtn");
+		KioskButton paymentBtn = new KioskButton(100, 600, 250, 80, "payment", "payBtn");
 		paymentBtn.addActionListener(e -> {
 			int money = Integer.parseInt(tf.getText());
 			if ( money == Consumer.getPrice() ) {
-				new Charge().setVisible(true);
+				new SuccessChargFrame().setVisible(true);
 				this.dispose();
 			}else if ( money > Consumer.getPrice() ) {
 				JOptionPane.showMessageDialog(null, "거스름돈 " + (money-Consumer.getPrice()) + "원을 반환합니다.", "정보", JOptionPane.INFORMATION_MESSAGE);
-				new Charge().setVisible(true);
+				new SuccessChargFrame().setVisible(true);
 				this.dispose();
 			}else {
 				new FailFrame().setVisible(true);
 				this.dispose();
 			}
 		});
-		add(paymentBtn);
+		panel.add(paymentBtn);
 	}
 	
-	public void paint(Graphics g) {
-		g.drawImage(background, 0, 0, null);
-	}
 }

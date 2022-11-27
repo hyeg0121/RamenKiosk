@@ -1,4 +1,4 @@
-package kiosk;
+package frame;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -9,19 +9,22 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-public class FailFrame extends CommonFrame{
+import components.KioskButton;
+import components.KioskFrame;
+
+public class FailFrame extends KioskFrame{
 	
 	Image background = new ImageIcon(FailFrame.class.getResource("../image/fail.png")).getImage();
 	
 	public FailFrame() {
-		var restartBtn = new CommonButton(100, 490, 250, 80, "restart", "restart");
+		var restartBtn = new KioskButton(100, 490, 250, 80, "restart", "restart");
 		restartBtn.addActionListener(e -> {
 			new PaymentFrame().setVisible(true);
 			this.dispose();
 		});
 		add(restartBtn);
 		
-		var cancelBtn = new CommonButton(100, 585, 250, 80, "cancel", "cancel");
+		var cancelBtn = new KioskButton(100, 585, 250, 80, "cancel", "cancel");
 		cancelBtn.addActionListener(e -> {
 			new StartFrame().setVisible(true);
 			this.dispose();

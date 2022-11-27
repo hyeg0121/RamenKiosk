@@ -8,7 +8,7 @@ public class Other {
 	private static int sausagesPrice = 700;
 	public static int priceList[] = { cheesePrice, eggPrice, tteokPrice, cheesePrice };
 	
-	public static int quantityList[] = new int[4];//치즈, 계란, 떡, 소세지
+	public static int quantityList[] = {50, 50, 50, 50};//치즈, 계란, 떡, 소세지
 
 	public static boolean cheeseChoice = false;
 	public static boolean eggChoice = false;
@@ -54,10 +54,5 @@ public class Other {
 		}
 	}
 	
-	public static void setQuantityMax() {
-		for(int i = 0; i < quantityList.length; i++) {
-			quantityList[i] = 50;
-		}
-	}
 	
 }

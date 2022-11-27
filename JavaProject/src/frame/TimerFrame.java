@@ -1,4 +1,4 @@
-package kiosk;
+package frame;
 
 import java.awt.Color;
 import java.util.Scanner;
@@ -17,20 +17,24 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
-public class TimerFrame extends CommonFrame implements Runnable{
+import components.KioskFrame;
+import components.KioskPanel;
+import kiosk.Consumer;
+
+public class TimerFrame extends KioskFrame implements Runnable{
 
 	private JLabel label;
-	Consumer c = new Consumer();
-	int sec = c.getSecond();
-	
-	Image background = new ImageIcon(TimerFrame.class.getResource("../image/Cooking.png")).getImage();
+	int sec = Consumer.getSecond();
 	
 	public TimerFrame() {
+		KioskPanel panel = new KioskPanel(setImage("Cooking"));
+		add(panel);
+		
 		label = new JLabel((sec/60)+" : "+(sec%60));
 		label.setFont(new Font("맑은고딕", Font.BOLD, 40));
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setBounds(100,200,250,80);
-		add(label);
+		panel.add(label);
 		Thread t1 = new Thread(this);
 		t1.start();
 	}
@@ -53,9 +57,5 @@ public class TimerFrame extends CommonFrame implements Runnable{
 		}
 	}
 
-	
-	public void paint(Graphics g) {
-		g.drawImage(background, 0, 0, null);
-	}
 }
 

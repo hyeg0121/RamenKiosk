@@ -1,4 +1,4 @@
-package kiosk;
+package frame;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -13,42 +13,43 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-public class RamenFrame extends CommonFrame {
-	//멤버 변수
-	Image background = new ImageIcon(RamenFrame.class.getResource("../image/ChoiceRamen.png")).getImage();
-	Ramen ramen = new Ramen();
+import components.KioskButton;
+import components.KioskFrame;
+import components.KioskPanel;
+import kiosk.Consumer;
+import kiosk.Ramen;
 
+public class RamenFrame extends KioskFrame {
+
+	private Image background = setImage("ChoiceRamen");
+	
 	//생성자
 	public RamenFrame () {		
-
+		KioskPanel panel = new KioskPanel(setImage("ChoiceRamen"));
+		add(panel);
+		
 		String[] ramens = { "진라면","신라면","너구리","참깨라면","불닭볶음면","짜파게티" };
 
 		for (int i = 0; i < ramens.length; i++) {
 			
-			var btn = new CommonButton(ramens[i], "ramen"+(i+1));
+			var btn = new KioskButton(ramens[i], "ramen"+(i+1));
 
 			if ( i % 2 == 0 ) {
-				btn.setBounds(50, 100+170*(i/2), 160, 160);
+				btn.setBounds(50, 115+170*(i/2), 160, 160);
 			}else {
-				btn.setBounds(240, 100+170*(i/2), 160, 160);
+				btn.setBounds(240, 115+170*(i/2), 160, 160);
 			}
 
 			btn.addActionListener(e -> {
-				Consumer.setPrice(ramen.getPrice(btn.getText()));
-				Consumer.setSecond(ramen.getSecond(btn.getText()));
+				Consumer.setPrice(Ramen.getPrice(btn.getText()));
+				Consumer.setSecond(Ramen.getSecond(btn.getText()));
 				new OtherFrame(btn.getText()).setVisible(true);
 				this.dispose();
 			});
 
-			this.add(btn);
+			panel.add(btn);
 
 		}
 	}
-	
-	//배경 이미지 메서드
-	public void paint(Graphics g) {
-		g.drawImage(background, 0, 0, null);
-	}
-
 
 }
