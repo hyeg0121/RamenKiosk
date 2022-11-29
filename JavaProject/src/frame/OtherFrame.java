@@ -56,14 +56,20 @@ public class OtherFrame extends KioskFrame {
 			}
 
 			btn.addActionListener(e -> {
+				//재고 검사
 				if ( Other.getQuantity(btn.getText()) == 0) {
-					JOptionPane.showMessageDialog(null, "죄송합니다. "+btn.getText() +"사리의 재고가 부족합니다.", "재고부족", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(getImage("info").getScaledInstance(60, 60, 4)));
+					JOptionPane.showMessageDialog(null, "죄송합니다. "+btn.getText() +"사리의 재고가 부족합니다.", "재고부족", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(getImage("error").getScaledInstance(60, 60, 4)));
+					return;
+				}
+				//중복선택 검사
+				if ( Other.getChoiceValue(btn.getText()) ) {
+					JOptionPane.showMessageDialog(null, "뽀글이 사용 안전을 위해 사리는 중복 추가 할 수 없습니다.", "중복추가불가", JOptionPane.INFORMATION_MESSAGE,new ImageIcon(getImage("error").getScaledInstance(60, 60, 4)));
+					return;
 				}
 				this.otherArea.setText(this.otherArea.getText()+ btn.getText()+" 선택\n");
 				this.payArea.setText((this.payArea.getText()+Other.getPrice(btn.getText()) +"원\n"));
 				Consumer.addPrice(Other.getPrice(name));
-				Other.setChoiceValue(btn.getText());
-				Other.setQuantity(btn.getText());
+				Other.changeChoiceValue(btn.getText());
 			});
 
 			panel.add(btn);
@@ -91,7 +97,6 @@ public class OtherFrame extends KioskFrame {
 			}
 			new ChoicePayWayFrame().setVisible(true);
 			this.dispose();
-
 		});
 		panel.add(choiceBtn);
 

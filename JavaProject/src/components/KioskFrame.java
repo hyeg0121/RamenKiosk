@@ -5,6 +5,7 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import components.KioskPanel;
 import components.KioskButton;
@@ -28,4 +29,5 @@ public class KioskFrame extends JFrame {
 		return new ImageIcon(KioskFrame.class.getResource("../image/"+imgName+".png")).getImage();	
 	}
 
+	
 }
