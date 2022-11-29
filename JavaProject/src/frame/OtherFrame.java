@@ -56,6 +56,9 @@ public class OtherFrame extends KioskFrame {
 			}
 
 			btn.addActionListener(e -> {
+				if ( Other.getQuantity(btn.getText()) == 0) {
+					JOptionPane.showMessageDialog(null, "죄송합니다. "+btn.getText() +"사리의 재고가 부족합니다.", "재고부족", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(getImage("info").getScaledInstance(60, 60, 4)));
+				}
 				this.otherArea.setText(this.otherArea.getText()+ btn.getText()+" 선택\n");
 				this.payArea.setText((this.payArea.getText()+Other.getPrice(btn.getText()) +"원\n"));
 				Consumer.addPrice(Other.getPrice(name));

@@ -27,5 +27,5 @@ public class KioskFrame extends JFrame {
 	public Image getImage(String imgName) {
 		return new ImageIcon(KioskFrame.class.getResource("../image/"+imgName+".png")).getImage();	
 	}
-	
+
 }

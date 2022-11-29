@@ -54,5 +54,16 @@ public class Other {
 		}
 	}
 	
+	public static int getQuantity(String other) {
+		if(other.equals("치즈")) {
+			return quantityList[0];
+		}else if(other.equals("계란")) {
+			return quantityList[1];
+		}else if(other.equals("떡")) {
+			return quantityList[2];
+		}else {
+			return quantityList[3];
+		}
+	}
 	
 }
