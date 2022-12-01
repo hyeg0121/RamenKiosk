@@ -2,9 +2,7 @@ package frame;
 
 import java.awt.Font;
 
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
 import components.KioskButton;
@@ -35,7 +33,7 @@ public class SuccessChargFrame extends KioskFrame implements Runnable{
 		Thread t = new Thread(this);
 		t.start();
 		
-		var startcookBtn = new KioskButton(100, 530, 250, 80, "startcook", "StartCookBtn");
+		KioskButton startcookBtn = new KioskButton(100, 530, 250, 80, "startcook", "StartCookBtn");
 		startcookBtn.addActionListener(e -> {
 			new TimerFrame().setVisible(true);
 			tValue = true;

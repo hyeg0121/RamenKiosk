@@ -1,18 +1,8 @@
 package frame;
 
-import java.awt.Color;
-import java.util.Scanner;
+import java.awt.Font;
 
 import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import java.awt.BorderLayout;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.util.Calendar;
-
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
@@ -57,7 +47,7 @@ public class TimerFrame extends KioskFrame implements Runnable{
 				--sec;
 				label.setText((sec/60)+" : "+(sec%60));
 				imgLb.setBounds(imgLb.getX()-20, 300, 1600, 200);
-				if ( imgLb.getX() == -1200) imgLb.setBounds(0, 300, 1600, 200);
+				if ( imgLb.getX() == -400) imgLb.setBounds(0, 300, 1600, 200);
 				
 				if( sec == 0) {
 					JOptionPane.showMessageDialog(null, "조리가 완료되었습니다! 맛있게드세요", "완료", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(getImage("basic").getScaledInstance(60, 60, 4)));
@@ -70,6 +60,5 @@ public class TimerFrame extends KioskFrame implements Runnable{
 		}
 	}//run
 	
-
 }//class
 

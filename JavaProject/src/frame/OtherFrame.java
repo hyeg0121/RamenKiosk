@@ -1,14 +1,8 @@
 package frame;
 
-import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Image;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -20,10 +14,12 @@ import kiosk.Consumer;
 import kiosk.Other;
 
 public class OtherFrame extends KioskFrame {
+	
 	//멤버변수
 	JTextArea otherArea = new JTextArea();
 	JTextArea payArea = new JTextArea();
-
+	JTextField totalTf = new JTextField();
+	
 	//생성자
 	public OtherFrame() {}
 	public OtherFrame(String name) {
@@ -31,18 +27,24 @@ public class OtherFrame extends KioskFrame {
 		add(panel);
 		
 		//선택창
-		this.otherArea.setBounds(20, 460, 200, 150);
+		this.otherArea.setBounds(20, 460, 200, 100);
 		otherArea.setFont(new Font("맑은 고딕", Font.BOLD, 15));
 		otherArea.setText(name+" 선택\n");
 		otherArea.setEditable(false);
 		panel.add(this.otherArea);
 
-		this.payArea.setBounds(225, 460, 200, 150);
+		this.payArea.setBounds(225, 460, 200, 100);
 		payArea.setFont(new Font("맑은 고딕", Font.BOLD, 15));
 		payArea.setText(Consumer.getPrice()+"원\n");
 		payArea.setEditable(false);
 		panel.add(this.payArea);
-
+		
+		this.totalTf.setBounds(20, 600, 400, 30);
+		totalTf.setText("총 금액 : " + Consumer.getPrice() +"\t 조리 시간 : " + (Consumer.getSecond()/60)+" 분 "+(Consumer.getSecond()%60) + " 초 ");
+		totalTf.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+		totalTf.setEditable(false);
+		panel.add(totalTf);
+		
 		// 사리 버튼 추가 
 		String[] others = {"치즈","계란","떡","소세지"};
 		for (int i =0; i < others.length; i++ ) {
@@ -66,8 +68,10 @@ public class OtherFrame extends KioskFrame {
 					JOptionPane.showMessageDialog(null, "뽀글이 사용 안전을 위해 사리는 중복 추가 할 수 없습니다.", "중복추가불가", JOptionPane.INFORMATION_MESSAGE,new ImageIcon(getImage("error").getScaledInstance(60, 60, 4)));
 					return;
 				}
+				
 				this.otherArea.setText(this.otherArea.getText()+ btn.getText()+" 선택\n");
 				this.payArea.setText((this.payArea.getText()+Other.getPrice(btn.getText()) +"원\n"));
+				this.totalTf.setText("총 금액 : " + Consumer.getPrice() +"\t 조리 시간 : " + (Consumer.getSecond()/60)+" 분 "+(Consumer.getSecond()%60) + " 초 ");
 				Consumer.addPrice(Other.getPrice(name));
 				Other.changeChoiceValue(btn.getText());
 			});

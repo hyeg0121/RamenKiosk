@@ -10,11 +10,7 @@ public class Other {
 	
 	public static int quantityList[] = {0, 50, 50, 50};//치즈, 계란, 떡, 소세지
 
-	public static boolean cheeseChoice = false;
-	public static boolean eggChoice = false;
-	public static boolean tteokChoice = false;
-	public static boolean sausegesChoice = false;
-	public static boolean choiceList[] = {cheeseChoice, eggChoice, tteokChoice, sausegesChoice};
+	public static boolean choiceList[] = {false, false, false, false};
 	
 	public Other() {}
 
@@ -44,25 +40,29 @@ public class Other {
 	
 	public static void changeChoiceValue(String other) {
 		if(other.equals("치즈")) {
-			cheeseChoice = !(cheeseChoice);
+			choiceList[0] = !(choiceList[0]);
+			//cheeseChoice = !(cheeseChoice);
 		}else if(other.equals("계란")) {
-			eggChoice = !(eggChoice);
+			choiceList[1] = !(choiceList[1]);
+			//eggChoice = !(eggChoice);
 		}else if(other.equals("떡")) {
-			tteokChoice = !(tteokChoice);
+			choiceList[2] = !(choiceList[2]);
+			//tteokChoice = !(tteokChoice);
 		}else {
-			sausegesChoice = !(sausegesChoice);
+			choiceList[3] = !(choiceList[3]);
+			//sausegesChoice = !(sausegesChoice);
 		}
 	}
 	
 	public static boolean getChoiceValue(String other) {
 		if(other.equals("치즈")) {
-			return cheeseChoice;
+			return choiceList[0];
 		}else if(other.equals("계란")) {
-			return eggChoice;
+			return choiceList[1];
 		}else if(other.equals("떡")) {
-			return tteokChoice;
+			return choiceList[2];
 		}else {
-			return sausegesChoice;
+			return choiceList[3];
 		}
 	}
 	

@@ -3,12 +3,11 @@ package frame;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.GridLayout;
-import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -25,12 +24,14 @@ public class PaymentFrame extends KioskFrame {
 		KioskPanel panel = new KioskPanel(getImage("payment"));
 		add(panel);
 		
-		//결제금액 팝업
-		JOptionPane.showMessageDialog(null, "결제 금액은 " + Consumer.getPrice() + "원 입니다", "정보", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(getImage("info").getScaledInstance(60, 60, 4)));
-		
 		JPanel mainPanel = new JPanel();
 		mainPanel.setBounds(100,300,250,280);
 		mainPanel.setLayout(new BorderLayout());
+		
+		JLabel lb = new JLabel("결제 금액은 " + Consumer.getPrice() + "원 입니다");
+		lb.setBounds(100,260,250,30);
+		lb.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		panel.add(lb);
 		
 		JTextField tf = new JTextField(50);
 		tf.setFont(new Font("맑은 고딕", Font.BOLD, 20));
@@ -45,7 +46,7 @@ public class PaymentFrame extends KioskFrame {
 		//금액 입력 버튼
 		int buttons[] = { 100, 500, 1000, 5000, 10000, 50000 };
 		for ( int i = 0; i < buttons.length; i++ ) {
-			var btn = new JButton(String.valueOf(buttons[i]));
+			JButton btn = new JButton(String.valueOf(buttons[i]));
 			btn.setBackground(Color.gray);
 			btn.setBorder(null);
 			btn.setForeground(Color.white);

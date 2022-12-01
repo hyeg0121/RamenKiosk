@@ -2,7 +2,6 @@ package kiosk;
 
 public class Ramen {
 
-
 	private static int jinPrice = 1000;
 	private static int sinPrice = 1000;
 	private static int neguriPrice = 1200;
