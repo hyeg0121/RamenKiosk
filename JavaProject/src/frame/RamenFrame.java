@@ -20,9 +20,9 @@ public class RamenFrame extends KioskFrame {
 			KioskButton btn = new KioskButton(ramens[i], "ramen"+(i+1));
 
 			if ( i % 2 == 0 ) {
-				btn.setBounds(50, 115+170*(i/2), 160, 160);
+				btn.setBounds(50, 115+170*(i/2), 140, 160);
 			}else {
-				btn.setBounds(240, 115+170*(i/2), 160, 160);
+				btn.setBounds(240, 115+170*(i/2), 140, 160);
 			}
 
 			btn.addActionListener(e -> {

@@ -15,7 +15,7 @@ public class TimerFrame extends KioskFrame implements Runnable{
 
 	private JLabel label;
 	private JLabel imgLb = new JLabel(new ImageIcon(getImage("ramens")));
-	int sec = Consumer.getSecond();
+	int sec = 15;
 	
 	public TimerFrame() {
 		//패널생성
@@ -30,7 +30,7 @@ public class TimerFrame extends KioskFrame implements Runnable{
 		panel.add(label);
 		
 		//흘러가는 이미지
-		imgLb.setBounds(450, 300, 1600, 200);
+		imgLb.setBounds(400, 300, 1600, 200);
 		panel.add(imgLb);
 		
 		//멀티스레드

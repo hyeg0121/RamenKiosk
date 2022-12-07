@@ -21,7 +21,8 @@ public class SuccessChargFrame extends KioskFrame implements Runnable{
 		add(panel);
 		
 		//결제에 성공 했을 때 사리 재고 감소
-		this.setOtherQuantity();
+		Other.setOtherQuantity();
+		Other.clearChoiceList();
 		
 		//시간 표시 
 		label.setFont(new Font("맑은 고딕", Font.BOLD, 20));
@@ -42,14 +43,7 @@ public class SuccessChargFrame extends KioskFrame implements Runnable{
 		panel.add(startcookBtn);
 	}//constructor
 	
-	public void setOtherQuantity() {
-		for(int i = 0; i < Other.quantityList.length; i++) {
-			if ( Other.choiceList[i] ) {
-				--Other.quantityList[i];
-				Other.choiceList[i] = false;
-			}
-		}
-	}
+	
 	
 	@Override
 	public void run() {

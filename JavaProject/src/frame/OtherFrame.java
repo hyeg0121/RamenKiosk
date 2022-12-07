@@ -52,9 +52,9 @@ public class OtherFrame extends KioskFrame {
 			KioskButton btn = new KioskButton(others[i], "other"+(i+1));
 
 			if ( i % 2 == 0 ) {
-				btn.setBounds(50, 120+170*(i/2), 160, 160);
+				btn.setBounds(50, 120+170*(i/2), 140, 160);
 			}else {
-				btn.setBounds(240, 120 + 170*(i/2), 160, 160);
+				btn.setBounds(240, 120 + 170*(i/2), 140, 160);
 			}
 
 			btn.addActionListener(e -> {
@@ -71,8 +71,9 @@ public class OtherFrame extends KioskFrame {
 				
 				this.otherArea.setText(this.otherArea.getText()+ btn.getText()+" 선택\n");
 				this.payArea.setText((this.payArea.getText()+Other.getPrice(btn.getText()) +"원\n"));
-				this.totalTf.setText("총 금액 : " + Consumer.getPrice() +"\t 조리 시간 : " + (Consumer.getSecond()/60)+" 분 "+(Consumer.getSecond()%60) + " 초 ");
 				Consumer.addPrice(Other.getPrice(name));
+				this.totalTf.setText("총 금액 : " + Consumer.getPrice() +"\t 조리 시간 : " + (Consumer.getSecond()/60)+" 분 "+(Consumer.getSecond()%60) + " 초 ");
+				
 				Other.changeChoiceValue(btn.getText());
 			});
 

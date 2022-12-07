@@ -6,7 +6,6 @@ public class Other {
 	private static int eggPrice = 500;
 	private static int tteokPrice = 700;
 	private static int sausagesPrice = 700;
-	public static int priceList[] = { cheesePrice, eggPrice, tteokPrice, cheesePrice };
 	
 	public static int quantityList[] = {0, 50, 50, 50};//치즈, 계란, 떡, 소세지
 
@@ -78,4 +77,18 @@ public class Other {
 		}
 	}
 	
+	public static void setOtherQuantity() {
+		for(int i = 0; i < Other.quantityList.length; i++) {
+			if ( Other.choiceList[i] ) {
+				--Other.quantityList[i];
+				Other.choiceList[i] = false;
+			}
+		}
+	}
+	
+	public static void clearChoiceList() {
+		for( int i = 0; i < choiceList.length; i++ ) {
+			choiceList[i] = false;
+		}
+	}
 }

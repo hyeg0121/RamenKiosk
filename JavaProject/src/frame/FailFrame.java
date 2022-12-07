@@ -3,6 +3,8 @@ package frame;
 import components.KioskButton;
 import components.KioskFrame;
 import components.KioskPanel;
+import kiosk.Consumer;
+import kiosk.Other;
 
 public class FailFrame extends KioskFrame{
 	
@@ -23,6 +25,8 @@ public class FailFrame extends KioskFrame{
 		KioskButton cancelBtn = new KioskButton(100, 585, 250, 80, "cancel", "cancel");
 		cancelBtn.addActionListener(e -> {
 			new StartFrame().setVisible(true);
+			Consumer.clear();
+			Other.clearChoiceList();
 			this.dispose();
 		});
 		panel.add(cancelBtn);

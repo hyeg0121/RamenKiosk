@@ -1,10 +1,14 @@
 package frame;
 
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 import components.KioskButton;
 import components.KioskFrame;
 import components.KioskPanel;
 
 import kiosk.Consumer;
+import kiosk.Manager;
 
 public class StartFrame extends KioskFrame {
 
@@ -29,6 +33,11 @@ public class StartFrame extends KioskFrame {
 		//관리자페이지
 		KioskButton managerBtn = new KioskButton(175, 665, 95, 35, "관리자페이지", "ManagerBtn");
 		managerBtn.addActionListener(e -> {
+			int pw = Integer.parseInt(JOptionPane.showInputDialog("비밀번호를 입력하세요."));
+			if (pw != Manager.getPw()) {
+				JOptionPane.showMessageDialog(null, "비밀번호가 알맞지 않습니다.", "경고", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(getImage("error").getScaledInstance(60, 60, 4)));
+				return ;
+			}
 			new ManagerFrame().setVisible(true);
 			this.dispose();
 		});
